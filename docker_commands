@@ -1,0 +1,8 @@
+# build the docker image from dockerfile
+docker build -t techtrends ./project/
+
+# run the app container
+docker run -d --name techapp -p 7111:3111 techtrends
+
+# get the logs of the container
+docker logs techapp

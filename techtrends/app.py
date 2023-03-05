@@ -60,6 +60,9 @@ def post(post_id):
       app.logger.info('Post is not found')
       return render_template('404.html'), 404
     else:
+      connection = get_db_connection()
+      title = connection.execute('SELECT Title FROM posts WHERE id = ?', (post_id,)).fetchone()
+      connection.close()
       app.logger.info('Post %s retrieved successfully', title)
       return render_template('post.html', post=post)
     
@@ -86,7 +89,7 @@ def create():
             connection.close()
 
             return redirect(url_for('index'))
-    app.logger.info('%s logged in successfully', title)
+  #  app.logger.info('%s logged in successfully', title)
     return render_template('create.html')
 
 # start the application on port 3111
