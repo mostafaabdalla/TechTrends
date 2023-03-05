@@ -4,7 +4,7 @@ FROM python:3.8
 LABEL maintainer="Mostafa Abdalla"
 
 # copy all the files from the current directory to the container working directory
-COPY ../techtrends/ /app
+COPY ./techtrends/ /app
 
 # set the working directory to /app
 WORKDIR /app

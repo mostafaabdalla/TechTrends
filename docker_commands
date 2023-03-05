@@ -1,8 +1,32 @@
 # build the docker image from dockerfile
-docker build -t techtrends ./project/
+docker build -t techtrends .
 
 # run the app container
 docker run -d --name techapp -p 7111:3111 techtrends
 
 # get the logs of the container
 docker logs techapp
+
+# logs
+* Serving Flask app 'app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
+INFO:werkzeug:172.17.0.1 - - [05/Mar/2023 21:07:57] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [05/Mar/2023 21:07:57] "GET /static/css/main.css HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [05/Mar/2023 21:07:57] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:app:Post <sqlite3.Row object at 0xffffa08ac970> retrieved successfully
+INFO:werkzeug:172.17.0.1 - - [05/Mar/2023 21:09:35] "GET /1 HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [05/Mar/2023 21:09:35] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:app:Post <sqlite3.Row object at 0xffffa08ac790> retrieved successfully
+INFO:werkzeug:172.17.0.1 - - [05/Mar/2023 21:09:38] "GET /3 HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [05/Mar/2023 21:09:38] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:172.17.0.1 - - [05/Mar/2023 21:09:39] "GET /create HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [05/Mar/2023 21:09:39] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:172.17.0.1 - - [05/Mar/2023 21:09:55] "POST /create HTTP/1.1" 302 -
+INFO:werkzeug:172.17.0.1 - - [05/Mar/2023 21:09:55] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:172.17.0.1 - - [05/Mar/2023 21:09:55] "GET /static/css/main.css HTTP/1.1" 304 -
