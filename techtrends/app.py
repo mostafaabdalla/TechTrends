@@ -22,6 +22,16 @@ def get_post(post_id):
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key'
 
+@app.route('/healthz')
+def healthcheck():
+    response = app.response_class(
+        response=json.dumps({"result": "OK - healthy"}),
+        status=200,
+        mimetype='application/json'
+    )
+    app.logger.info('Status request successfull')
+    return response
+
 # Define the main route of the web application 
 @app.route('/')
 def index():
