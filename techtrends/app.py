@@ -78,6 +78,7 @@ def post(post_id):
 # Define the About Us page
 @app.route('/about')
 def about():
+    app.logger.info('The About Us page is retrieved')  
     return render_template('about.html')
 
 # Define the post creation functionality 
