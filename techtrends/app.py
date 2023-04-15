@@ -96,7 +96,7 @@ def create():
                          (title, content))
             connection.commit()
             connection.close()
-
+            app.logger.info('New post "%s" created!', title)
             return redirect(url_for('index'))
 
     return render_template('create.html')
