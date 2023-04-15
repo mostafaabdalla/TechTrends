@@ -1,0 +1,2 @@
+#build the docker image with tag
+docker build -t mostafaabdalla/techtrends .
