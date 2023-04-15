@@ -1,6 +1,6 @@
 import sqlite3
 
-from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
+from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash, make_response
 from werkzeug.exceptions import abort
 
 connection_count = 0
@@ -41,16 +41,18 @@ def metrics():
     # Retrieve post count
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute("SELECT COUNT(*) FROM articles;")
+    cur.execute("SELECT COUNT(*) FROM posts;")
     post_count = cur.fetchone()[0]
     cur.close()
     conn.close()
 
     # Return metrics
-    return jsonify({
+    response = make_response(jsonify({
         "db_connection_count": connection_count,
         "post_count": post_count
-    })
+    }), 200)
+    return response
+
 # Define the main route of the web application 
 @app.route('/')
 def index():
