@@ -3,6 +3,8 @@ import sqlite3
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash, make_response
 from werkzeug.exceptions import abort
 
+import logging
+
 connection_count = 0
 
 # Function to get a database connection.
@@ -67,8 +69,10 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
+      app.logger.info('Post with ID %s does not exist', post_id)  
       return render_template('404.html'), 404
     else:
+      app.logger.info('Post "%s" retrieved!', post['title'])  
       return render_template('post.html', post=post)
 
 # Define the About Us page
@@ -98,4 +102,5 @@ def create():
 
 # start the application on port 3111
 if __name__ == "__main__":
+   logging.basicConfig(level=logging.DEBUG) 
    app.run(host='0.0.0.0', port='3111')
