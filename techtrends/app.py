@@ -3,9 +3,13 @@ import sqlite3
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
 
+connection_count = 0
+
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
 def get_db_connection():
+    global connection_count
+    connection_count += 1
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
     return connection
@@ -32,6 +36,21 @@ def healthcheck():
     app.logger.info('Status request successfull')
     return response
 
+@app.route('/metrics')
+def metrics():
+    # Retrieve post count
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT COUNT(*) FROM articles;")
+    post_count = cur.fetchone()[0]
+    cur.close()
+    conn.close()
+
+    # Return metrics
+    return jsonify({
+        "db_connection_count": connection_count,
+        "post_count": post_count
+    })
 # Define the main route of the web application 
 @app.route('/')
 def index():
