@@ -11,3 +11,5 @@ spec:
     protocol: TCP
     targetPort: 3111
   type: ClusterIP
+  selector:
+    app: techtrends
