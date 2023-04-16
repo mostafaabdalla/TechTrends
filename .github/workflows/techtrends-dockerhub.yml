@@ -36,6 +36,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/x86_64
+          platforms: linux/arm64
           push: true
           tags: mostafaabdalla/techtrends:latest
