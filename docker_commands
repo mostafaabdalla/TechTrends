@@ -1,2 +1,5 @@
-#build the docker image with tag
+# Build the docker image with tag
 docker build -t mostafaabdalla/techtrends .
+
+# Run the docker container
+docker run -d --name techtrends -p 7111:3111 mostafaabdalla/techtrends
