@@ -3,3 +3,34 @@ docker build -t mostafaabdalla/techtrends .
 
 # Run the docker container
 docker run -d --name techtrends -p 7111:3111 mostafaabdalla/techtrends
+
+# Container logs
+docker logs techtrends                                                
+ * Serving Flask app 'app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+2023-04-16 00:22:51 WARNING   * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2023-04-16 00:22:51 INFO      * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
+2023-04-16 00:22:53 INFO     172.17.0.1 - - [16/Apr/2023 00:22:53] "GET / HTTP/1.1" 200 -
+2023-04-16 00:22:54 INFO     172.17.0.1 - - [16/Apr/2023 00:22:54] "GET /static/css/main.css HTTP/1.1" 304 -
+2023-04-16 00:23:22 INFO     Post "2020 CNCF Annual Report" retrieved!
+2023-04-16 00:23:22 INFO     172.17.0.1 - - [16/Apr/2023 00:23:22] "GET /1 HTTP/1.1" 200 -
+2023-04-16 00:23:22 INFO     172.17.0.1 - - [16/Apr/2023 00:23:22] "GET /static/css/main.css HTTP/1.1" 304 -
+2023-04-16 00:23:25 INFO     The About Us page is retrieved
+2023-04-16 00:23:25 INFO     172.17.0.1 - - [16/Apr/2023 00:23:25] "GET /about HTTP/1.1" 200 -
+2023-04-16 00:23:25 INFO     172.17.0.1 - - [16/Apr/2023 00:23:25] "GET /static/css/main.css HTTP/1.1" 304 -
+2023-04-16 00:23:30 INFO     172.17.0.1 - - [16/Apr/2023 00:23:30] "GET /metrics HTTP/1.1" 200 -
+2023-04-16 00:23:34 INFO     Status request successfull
+2023-04-16 00:23:34 INFO     172.17.0.1 - - [16/Apr/2023 00:23:34] "GET /healthz HTTP/1.1" 200 -
+2023-04-16 00:23:39 INFO     172.17.0.1 - - [16/Apr/2023 00:23:39] "GET /create HTTP/1.1" 200 -
+2023-04-16 00:23:39 INFO     172.17.0.1 - - [16/Apr/2023 00:23:39] "GET /static/css/main.css HTTP/1.1" 304 -
+2023-04-16 00:23:51 INFO     New post "Udacity" created!
+2023-04-16 00:23:51 INFO     172.17.0.1 - - [16/Apr/2023 00:23:51] "POST /create HTTP/1.1" 302 -
+2023-04-16 00:23:51 INFO     172.17.0.1 - - [16/Apr/2023 00:23:51] "GET / HTTP/1.1" 200 -
+2023-04-16 00:23:51 INFO     172.17.0.1 - - [16/Apr/2023 00:23:51] "GET /static/css/main.css HTTP/1.1" 304 -
+2023-04-16 00:23:53 INFO     Post "Udacity" retrieved!
+2023-04-16 00:23:53 INFO     172.17.0.1 - - [16/Apr/2023 00:23:53] "GET /7 HTTP/1.1" 200 -
+2023-04-16 00:23:53 INFO     172.17.0.1 - - [16/Apr/2023 00:23:53] "GET /static/css/main.css HTTP/1.1" 304 -
