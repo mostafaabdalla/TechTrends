@@ -30,13 +30,19 @@ app.config['SECRET_KEY'] = 'your secret key'
 
 @app.route('/healthz')
 def healthcheck():
-    response = app.response_class(
-        response=json.dumps({"result": "OK - healthy"}),
-        status=200,
-        mimetype='application/json'
-    )
-    app.logger.info('Status request successfull')
-    return response
+    try:
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='posts';")
+        result = cursor.fetchone()
+        if result is None:
+            app.logger.info('Error, unhealthy')
+            return jsonify({"result": "ERROR - unhealthy"}), 500
+        else:
+            app.logger.info('OK, healthy')
+            return jsonify({"result": "OK - healthy"})
+    except:
+        return jsonify({"result": "ERROR - unhealthy"}), 500
 
 @app.route('/metrics')
 def metrics():
