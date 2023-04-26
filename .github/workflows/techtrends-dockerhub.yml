@@ -38,4 +38,4 @@ jobs:
           file: ./Dockerfile
           platforms: linux/arm64
           push: true
-          tags: mostafaabdalla/techtrends:latest
+          tags: ${{ steps.meta.outputs.tags }}
